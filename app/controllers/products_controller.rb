@@ -14,7 +14,17 @@ class ProductsController < ApplicationController
       :card => params['payjp-token'],
       :currency => 'jpy',
     )
-    redirect_to @product, notice: 'ありがとうございました'
+    cowsay = <<'EOS'
+-----------------------------------------
+< ありがとうございました！！ >
+-----------------------------------------
+       \   ^__^
+        \  (oo)\_______
+           (__)\       )\/\
+               ||----w |
+               ||     ||
+EOS
+    redirect_to @product, notice: cowsay.gsub(/ /, '&nbsp;').gsub(/\n/, '<br />')
   end
 
   # GET /products/1
